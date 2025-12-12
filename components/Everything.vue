@@ -14,9 +14,18 @@ TODO:
 <p>{{data?.tag ?? ""}}</p>
         <h1>{{data?.title ?? ""}}</h1>
         <div v-for="item in data?.items ?? []" :key="item.id || item.title" @click="toggleItem(item)"
-            @keydown.enter.prevent="toggleItem(item)" tabindex="0">
-          <h2>{{ item.title }} </h2>
-          <p v-if="expandedItem?.title == item.title">{{item.text}}</p>
+            tabindex="0">
+          <div><h2>{{ item.title }} </h2>
+          <Button
+              :is-open="isOpen(item)"
+              :button-name="buttonName(item)"
+              :toggle-item="() => toggleItem(item)"
+          />
+          </div>
+          <div v-if="isOpen(item)"><p >{{item.text}}</p>
+          <NuxtPicture v-if="activeItem?.image" :src="activeItem?.image" alt='Screenshot demonstaiting activeItem?.title in the application'  height="1140" width="1300"  :placeholder="[1300, 1140, 75, 10]" loading="lazy" format="webp"
+                       sizes="md:0px "
+          /></div>
         </div>
         <pre>{{ error }}</pre>
   </section>
@@ -30,6 +39,14 @@ const { data, error } = await useFetch(()=>"https://eoyge3duj7xtdqd.m.pipedream.
 
 const activeItem = ref<IItem | null>(null);
 const expandedItem = ref<IItem | null>(null);
+
+const isOpen =(item: IItem) =>
+  expandedItem.value?.title === item.title
+
+
+const buttonName = (item: IItem) =>
+  isOpen(item) ? 'hide more' : 'show more'
+
 
 watch(
     data,
@@ -46,7 +63,7 @@ const toggleItem = (item : IItem) => {
 
   activeItem.value = item
 
-  if (expandedItem.value === item) {
+  if (isOpen(item)) {
     expandedItem.value = null
   }
   else {

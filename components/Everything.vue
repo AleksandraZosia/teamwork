@@ -7,20 +7,18 @@ TODO:
 -->
 
 <template>
-  <section id="plan">
-    <div>
-      <div>
-        <NuxtPicture v-if="activeItem?.image" :src="activeItem?.image" alt="Item image" height="540" placeholder />
-<h1>{{data?.tag ?? ""}}</h1>
-        <h2>{{data?.title ?? ""}}</h2>
-        <dl v-for="item in data?.items ?? []" :key="item.id || item.title" @click="toggleItem(item)"
+  <section>
+        <NuxtPicture v-if="activeItem?.image" :src="activeItem?.image" alt='Screenshot demonstaiting activeItem?.title in the application'  height="1140" width="1300"  :placeholder="[1300, 1140, 75, 10]" loading="lazy" format="webp"
+        sizes="sm:0 md:300px lg:500 "
+        />
+<p>{{data?.tag ?? ""}}</p>
+        <h1>{{data?.title ?? ""}}</h1>
+        <div v-for="item in data?.items ?? []" :key="item.id || item.title" @click="toggleItem(item)"
             @keydown.enter.prevent="toggleItem(item)" tabindex="0">
-          <dt>{{ item.title }} </dt>
-          <dd v-if="expandedItem?.title == item.title">{{item.text}}</dd>
-        </dl>
+          <h2>{{ item.title }} </h2>
+          <p v-if="expandedItem?.title == item.title">{{item.text}}</p>
+        </div>
         <pre>{{ error }}</pre>
-      </div>
-    </div>
   </section>
 </template>
 

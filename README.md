@@ -1,75 +1,62 @@
-# Nuxt Minimal Starter
+# Teamwork Recruitment Task
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Overview
 
-## Setup
+This repository contains the solution for the **Teamwork Marketing - Front-end Assessment** recruitment task.
 
-Make sure to install dependencies:
+The goal of this project was to built a reusable section of a webpage responsible for fetching and presenting data that illustrates how the product assists teams with their work planning.
+
+The deployed version is available at [teamwork-eight.vercel.app](https://teamwork-eight.vercel.app/)
+
+## 🚀 Setup and Installation
+
+This project was built using **Nuxt 3**. To run it locally, follow these steps:
+
+1. Clone repo:
+
+```
+git clone AleksandraZosia/teamwork
+```
+
+2. Install dependencies:
 
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+3. Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Check out the [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
-Build the application for production:
+## 💡 Implementation Decisions & Principles
 
-```bash
-# npm
-npm run build
+In tackling this assignment, my focus was on delivering a clean, functional solution while demonstrating an understanding of best practices, **without over-engineering the final product.**
 
-# pnpm
-pnpm build
+1. Development Principles & Code Structure
 
-# yarn
-yarn build
+I implemented the following structure to ensure maintainability and scalability, even for this small project:
 
-# bun
-bun run build
-```
+- Modular SCSS/CSS:
+- Defined core variables in dedicated partials, specifically:
+- `_colors.scss` : Centralized management of the design system's color palette.
+- ` _breakpoints.scss` : Defined standard media query breakpoints to ensure responsive layout is managed from a single source of truth.
+  - Reusable Component Design:
+    - The user interface is broken down into small, easy to manage components (e.g., `Accordion`, `Arrow`). This makes my code easy to read and maintain and modify.
 
-Locally preview production build:
+2. Balancing Complexity (KISS Principle)
+   To maintain focus on the core requirements and the **"Keep It Simple, Stupid" (KISS) principle**, I intentionally omitted certain architectural patterns:
 
-```bash
-# npm
-npm run preview
+| routing| the project contains only single view|
 
-# pnpm
-pnpm preview
+- global state management : component hiearchy is shallow and all data comes from single request, so prop drilling was minimal.
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+| Omitted feature         | Rationale                                                                                           |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| Routing                 | the project contains only single view                                                               |
+| Global state management | component hiearchy is shallow and all data comes from single request, so prop drilling was minimal. |

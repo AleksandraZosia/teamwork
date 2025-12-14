@@ -18,7 +18,6 @@ const accordionId = computed(
   <div class="accordion-section">
     <button
       class="accordion-trigger"
-      type="button"
       :aria-expanded="isOpen"
       :aria-controls="accordionId"
       @click="toggleItem"

@@ -1,5 +1,5 @@
-
-
+@use "_breakpoints" as *;
+@use "_colors" as *;
 
 * {
   margin: 0;
@@ -17,25 +17,149 @@ html {
 
 body {
   font-family: 'Work Sans', sans-serif;
+  background-color: get-color($background);
+  padding: 40px 28px;
+
+@include lg {
+  padding: 80px
+}
+
+}
+
+section {
+  display: flex;
+  gap:20px;
+ }
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  color: get-color($text);
+  line-height: 26px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.header {
+gap: 25px;
+}
+
+.main-heading {
+  color: get-color($heading);
+
+}
+
+.tagline {
+  color: get-color($accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 400;
 }
 
 button{
   all: unset;
   cursor: pointer;
-
-
   font: inherit;
   color: inherit;
-
-
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-
+  justify-content: space-between;
 
   &:focus-visible {
-    outline: 2px solid #4f46e5;
-    outline-offset: 3px;
-    border-radius: 6px;
+    outline: 0.5px solid;
+    outline-offset: 2px;
   }
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.accordion-heading {
+  color: get-color($heading, secondary);
+  font-weight: 500;
+  font-size: 21px;
+
+ &.open {
+    color: get-color($accent, secondary);
+  }
+}
+
+.accordion-section {
+  flex-direction: column;
+  background-color: get-color($background, secondary);
+  border-radius: 4px;
+  padding: 18px;
+  display: inline-flex;
+}
+
+.accordion-trigger:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.accordion-panel {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+.accordion-panel[aria-hidden="false"] {
+  opacity: 1;
+  padding-top: 15px;
+}
+
+.accordion-content {
+  padding-bottom: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+ @include lg {
+   align-items: flex-start;
+ }
+}
+
+.arrow path {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.arrow.open path {
+  transform: rotate(180deg);
+}
+
+.hero-img {
+  display: none;
+
+  @include lg {
+    display: block;
+    max-width: 50vw;
+    height: auto;
+  }
+}
+
+.mobile-img {
+  @include lg {
+    display: none;
+  }
+}
+
+.error {
+  padding: 40px;
+  h1{
+    color: get-color($error);
+  }
+}
+
+

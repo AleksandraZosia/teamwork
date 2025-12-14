@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "sass:meta";
+
+$background: (
+"main": #FFFFFF,
+"secondary": #EAEEF4
+);
+
+$heading: (
+"main": #1D1C39,
+ "secondary": #0B0E1F,
+);
+
+$text: #494E6A;
+
+$accent: (
+"main": #FF22B1,
+"secondary": #4461D7
+);
+
+$error: #c60c0c;
+
+@function get-color($source, $variant: "main") {
+  @if meta.type-of($source) == "map" {
+  @return map.get($source, $variant);
+  }
+
+@return $source;
+}

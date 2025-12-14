@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import type {IData, IItem} from "~/types/content";
+
+const {data, isOpen, activeItem} = defineProps<{
+  data: IData | unknown;
+  isOpen: (item: IItem)=>boolean;
+  activeItem: IItem;
+  toggleItem: (item: IItem) => void;
+}>()
+</script>
+
 <template>
     <section>
        <NuxtPicture
@@ -31,14 +42,3 @@
     </div>
     </section>
    </template>
-
-<script setup lang="ts">
-import type {IData, IItem} from "~/types/content";
-
-const {data, isOpen, activeItem} = defineProps<{
-  data: IData;
-  isOpen: (item: IItem)=>boolean;
-  activeItem: IItem;
-  toggleItem: (item: IItem) => void;
-}>()
-</script>

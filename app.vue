@@ -1,8 +1,3 @@
-<template>
-  <main> <Error v-if="error" />
-   <Content v-else-if="activeItem" :data="data" :active-item="activeItem" :is-open="isOpen" :toggle-item="toggleItem" />
- </main>
-</template>
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type {IItem} from "~/types/content";
@@ -40,3 +35,9 @@ const toggleItem = (item : IItem) => {
 }
 
 </script>
+
+<template>
+  <main> <Error v-if="error" />
+   <Content v-else-if="activeItem" :data="data" :active-item="activeItem" :is-open="isOpen" :toggle-item="toggleItem" />
+ </main>
+</template>

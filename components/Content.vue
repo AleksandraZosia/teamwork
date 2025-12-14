@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { IData, IItem } from "~/types/content";
 
-const { data, isOpen, activeItem } = defineProps<{
-  data: IData | unknown;
-  isOpen: (item: IItem) => boolean;
+const { data, checkOpen, activeItem } = defineProps<{
+  data: IData;
+  checkOpen: (item: IItem) => boolean;
   activeItem: IItem;
   toggleItem: (item: IItem) => void;
 }>();
@@ -27,15 +27,15 @@ const { data, isOpen, activeItem } = defineProps<{
     />
     <div class="content">
       <header class="header">
-        <p class="tagline">{{ data?.tag ?? "" }}</p>
-        <h1 class="main-heading">{{ data?.title ?? "" }}</h1>
+        <p class="tagline">{{ data.tag }}</p>
+        <h1 class="main-heading">{{ data.title }}</h1>
       </header>
       <div class="accordion-wrapper">
         <Accordion
           v-for="item in data?.items ?? []"
-          :key="item.id || item.title"
+          :key="item.title"
           :item="item"
-          :is-open="isOpen(item)"
+          :is-open="checkOpen(item)"
           :toggle-item="() => toggleItem(item)"
           accordion-name="plan-accordion"
         />

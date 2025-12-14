@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import type { IItem } from "~/types/content";
+import type { IData, IItem } from "~/types/content";
 
-const { data, error } = await useFetch(
+const { data, error } = await useFetch<IData>(
   () => "https://eoyge3duj7xtdqd.m.pipedream.net/",
 );
 
 const activeItem = ref<IItem>();
 const expandedItem = ref<IItem | null>(null);
 
-const isOpen = (item: IItem) => expandedItem.value?.title === item.title;
+const checkOpen = (item: IItem) => expandedItem.value?.title === item.title;
 
 watch(
   data,
@@ -25,7 +25,7 @@ watch(
 const toggleItem = (item: IItem) => {
   activeItem.value = item;
 
-  if (isOpen(item)) {
+  if (checkOpen(item)) {
     expandedItem.value = null;
   } else {
     expandedItem.value = item;
@@ -37,10 +37,10 @@ const toggleItem = (item: IItem) => {
   <main>
     <Error v-if="error" />
     <Content
-      v-else-if="activeItem"
+      v-else-if="activeItem && data"
       :data="data"
       :active-item="activeItem"
-      :is-open="isOpen"
+      :check-open="checkOpen"
       :toggle-item="toggleItem"
     />
   </main>

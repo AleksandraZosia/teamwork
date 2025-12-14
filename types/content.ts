@@ -1,5 +1,3 @@
-import {string} from "postcss-selector-parser";
-
 export interface  IData  {
     tag: string,
     title: string,
@@ -11,5 +9,3 @@ export interface IItem {
     image: string,
     title: string,
 }
-
-

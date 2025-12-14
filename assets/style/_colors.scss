@@ -2,28 +2,28 @@
 @use "sass:meta";
 
 $background: (
-"main": #FFFFFF,
-"secondary": #EAEEF4
+  "main": #ffffff,
+  "secondary": #eaeef4,
 );
 
 $heading: (
-"main": #1D1C39,
- "secondary": #0B0E1F,
+  "main": #1d1c39,
+  "secondary": #0b0e1f,
 );
 
-$text: #494E6A;
+$text: #494e6a;
 
 $accent: (
-"main": #FF22B1,
-"secondary": #4461D7
+  "main": #ff22b1,
+  "secondary": #4461d7,
 );
 
 $error: #c60c0c;
 
 @function get-color($source, $variant: "main") {
   @if meta.type-of($source) == "map" {
-  @return map.get($source, $variant);
+    @return map.get($source, $variant);
   }
 
-@return $source;
+  @return $source;
 }

@@ -13,23 +13,23 @@
 }
 
 html {
-  box-sizing: border-box;}
+  box-sizing: border-box;
+}
 
 body {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   background-color: get-color($background);
   padding: 40px 28px;
 
-@include lg {
-  padding: 80px
-}
-
+  @include lg {
+    padding: 80px;
+  }
 }
 
 section {
   display: flex;
-  gap:20px;
- }
+  gap: 20px;
+}
 
 p {
   font-weight: 400;
@@ -44,12 +44,11 @@ h1 {
 }
 
 .header {
-gap: 25px;
+  gap: 25px;
 }
 
 .main-heading {
   color: get-color($heading);
-
 }
 
 .tagline {
@@ -59,7 +58,7 @@ gap: 25px;
   font-weight: 400;
 }
 
-button{
+button {
   all: unset;
   cursor: pointer;
   font: inherit;
@@ -90,7 +89,7 @@ button{
   font-weight: 500;
   font-size: 21px;
 
- &.open {
+  &.open {
     color: get-color($accent, secondary);
   }
 }
@@ -110,7 +109,9 @@ button{
 
 .accordion-panel {
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.2s ease;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.2s ease;
   opacity: 0;
 }
 
@@ -124,9 +125,9 @@ button{
   align-items: center;
   display: flex;
   flex-direction: column;
- @include lg {
-   align-items: flex-start;
- }
+  @include lg {
+    align-items: flex-start;
+  }
 }
 
 .arrow path {
@@ -157,9 +158,7 @@ button{
 
 .error {
   padding: 40px;
-  h1{
+  h1 {
     color: get-color($error);
   }
 }
-
-
